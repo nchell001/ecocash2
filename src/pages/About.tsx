@@ -4,7 +4,7 @@ import { Heart, Shield, Users, Target } from 'lucide-react';
 export default function About() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             About InnBucks Loans
@@ -102,7 +102,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-emerald-600 text-white">
+      <section className="py-12 md:py-16 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Get Started?

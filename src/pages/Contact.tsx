@@ -3,7 +3,7 @@ import { Mail, MessageCircle, Clock, MapPin } from 'lucide-react';
 export default function Contact() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Contact & Support

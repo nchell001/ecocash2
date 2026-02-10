@@ -86,7 +86,7 @@ export default function Verify() {
 
   if (success) {
     return (
-      <div className="bg-gradient-to-b from-sky-50 to-sky-200 min-h-screen flex items-center justify-center py-12">
+      <div className="bg-gradient-to-b from-background to-white min-h-screen flex items-center justify-center py-12">
         <div className="w-full max-w-md bg-white rounded-xl shadow-xl px-8 py-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Verification Complete</h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -106,7 +106,7 @@ export default function Verify() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-sky-50 to-sky-200 min-h-screen flex items-center justify-center py-12">
+    <div className="bg-gradient-to-b from-background to-white min-h-screen flex items-center justify-center py-12">
       <div className="w-full max-w-md bg-white rounded-xl shadow-xl px-8 py-10">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 text-center mb-6">Log In</h1>
 
@@ -162,7 +162,7 @@ export default function Verify() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold text-sm tracking-wide hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-white py-2 rounded-md font-semibold text-sm tracking-wide hover:bg-primary-light transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'LOGGING IN...' : 'SUBMIT'}
           </button>

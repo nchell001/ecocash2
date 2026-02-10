@@ -4,7 +4,7 @@ import { Shield, Smartphone, Zap, CheckCircle } from 'lucide-react';
 export default function Home() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -16,13 +16,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 to="/apply"
-                className="bg-emerald-600 text-white px-8 py-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-lg w-full sm:w-auto text-center"
+                className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-light transition-colors font-semibold text-lg w-full sm:w-auto text-center"
               >
                 Apply Now
               </Link>
               <Link
                 to="/loan-packages"
-                className="bg-white text-emerald-600 px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-lg border-2 border-emerald-600 w-full sm:w-auto text-center"
+                className="bg-white text-primary px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-lg border-2 border-primary w-full sm:w-auto text-center"
               >
                 View Loan Packages
               </Link>
@@ -35,8 +35,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-emerald-600" />
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Secure</h3>
               <p className="text-gray-600 leading-relaxed">
@@ -45,8 +45,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-emerald-600" />
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Transparent Fees</h3>
               <p className="text-gray-600 leading-relaxed">
@@ -55,8 +55,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="h-8 w-8 text-emerald-600" />
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Mobile Friendly</h3>
               <p className="text-gray-600 leading-relaxed">
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {[
+                {[
               { step: '1', title: 'Choose Loan', desc: 'Select the amount you need' },
               { step: '2', title: 'Apply Online', desc: 'Fill out our simple form' },
               { step: '3', title: 'Verification', desc: 'We verify your details' },
@@ -87,7 +87,7 @@ export default function Home() {
               { step: '5', title: 'Repay', desc: 'Pay back on time' },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
                   {item.step}
                 </div>
                 <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
@@ -99,7 +99,7 @@ export default function Home() {
           <div className="text-center mt-10">
             <Link
               to="/how-it-works"
-              className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors text-lg"
+              className="text-primary font-semibold hover:text-primary-light transition-colors text-lg"
             >
               Learn More →
             </Link>
@@ -107,7 +107,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-emerald-600 text-white">
+      <section className="py-12 md:py-16 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Why Choose InnBucks Loans?
@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <Link
             to="/apply"
-            className="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg mt-10"
+            className="inline-block bg-white text-primary px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg mt-10"
           >
             Get Started Today
           </Link>

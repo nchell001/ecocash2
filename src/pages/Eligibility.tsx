@@ -50,7 +50,7 @@ export default function Eligibility() {
 
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Eligibility Requirements
@@ -135,7 +135,7 @@ export default function Eligibility() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/apply"
-                className="bg-emerald-600 text-white px-8 py-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-lg"
+                className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-light transition-colors font-semibold text-lg"
               >
                 Apply Now
               </Link>

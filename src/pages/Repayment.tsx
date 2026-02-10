@@ -4,7 +4,7 @@ import { Smartphone, Calendar, AlertTriangle, DollarSign } from 'lucide-react';
 export default function Repayment() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Repayment & Fees
@@ -58,7 +58,7 @@ export default function Repayment() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
                   1
                 </div>
                 <div>
@@ -67,7 +67,7 @@ export default function Repayment() {
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
                   2
                 </div>
                 <div>
@@ -76,7 +76,7 @@ export default function Repayment() {
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
                   3
                 </div>
                 <div>
@@ -85,7 +85,7 @@ export default function Repayment() {
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
                   4
                 </div>
                 <div>
@@ -101,7 +101,7 @@ export default function Repayment() {
           </h2>
           <div className="overflow-x-auto mb-12">
             <table className="w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-emerald-600 text-white">
+              <thead className="bg-primary text-white">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Loan Amount</th>
                   <th className="px-6 py-4 text-left font-semibold">Service Fee</th>
@@ -188,7 +188,7 @@ export default function Repayment() {
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-emerald-600 text-white px-8 py-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-lg"
+              className="inline-block bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-light transition-colors font-semibold text-lg"
             >
               Apply for a Loan
             </Link>

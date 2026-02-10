@@ -32,14 +32,14 @@ export default function Header() {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+                className="text-gray-800 hover:text-primary transition-colors font-medium"
               >
                 {item.name}
               </Link>
             ))}
             <Link
               to="/apply"
-              className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
+              className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-light transition-colors font-semibold shadow-sm"
             >
               Apply Now
             </Link>
@@ -47,7 +47,7 @@ export default function Header() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-700"
+            className="md:hidden text-gray-800"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -60,7 +60,7 @@ export default function Header() {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsMenuOpen(false)}
-                className="block text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2"
+                className="block text-gray-800 hover:text-primary transition-colors font-medium py-2"
               >
                 {item.name}
               </Link>
@@ -68,7 +68,7 @@ export default function Header() {
             <Link
               to="/apply"
               onClick={() => setIsMenuOpen(false)}
-              className="block bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors font-semibold text-center"
+              className="block bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-light transition-colors font-semibold text-center shadow-sm"
             >
               Apply Now
             </Link>

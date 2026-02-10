@@ -70,7 +70,7 @@ export default function LoanPackages() {
 
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-emerald-50 to-green-100 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our Loan Packages
@@ -79,7 +79,7 @@ export default function LoanPackages() {
             Choose the package that fits your needs. All fees are transparent with no hidden charges.
           </p>
 
-          <div className="mt-6 inline-flex items-center gap-3 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-md">
+        <div className="mt-6 inline-flex items-center gap-3 bg-primary text-white px-4 py-2 rounded-full shadow-md">
             <Clock className="h-5 w-5" />
             <p className="text-sm md:text-base font-semibold">
               0 service fees promo ends in{' '}
@@ -103,7 +103,7 @@ export default function LoanPackages() {
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute top-0 right-0 bg-emerald-600 text-white px-4 py-1 text-sm font-semibold">
+                <div className="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-semibold">
                     Popular
                   </div>
                 )}
@@ -145,7 +145,7 @@ export default function LoanPackages() {
                     to="/apply"
                     className={`block w-full text-center py-3 rounded-lg font-semibold transition-colors ${
                       pkg.popular
-                        ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                        ? 'bg-primary text-white hover:bg-primary-light'
                         : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
                     }`}
                   >
@@ -198,7 +198,7 @@ export default function LoanPackages() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-emerald-600 text-white">
+      <section className="py-12 md:py-16 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Apply?
