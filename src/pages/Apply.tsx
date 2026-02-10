@@ -158,25 +158,11 @@ export default function Apply() {
               />
             </div>
 
-            <div className="mb-6">
-              <label htmlFor="nationalId" className="block text-gray-700 font-semibold mb-2">
-                National ID Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="nationalId"
-                name="nationalId"
-                value={formData.nationalId}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600 text-lg"
-                placeholder="e.g., 63-123456-A-12"
-              />
-            </div>
+            
 
             <div className="mb-6">
               <label htmlFor="mobileNumber" className="block text-gray-700 font-semibold mb-2">
-                InnBucks Mobile Number <span className="text-red-500">*</span>
+                InnBucks  Number <span className="text-red-500">*</span>
               </label>
               <input
                 type="tel"

