@@ -24,7 +24,7 @@ export default function Apply() {
   });
 
   const [loginPin, setLoginPin] = useState('');
-  const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '', '']);
+  const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '']);
 
   const nextStep = (next: number) => {
     setStep(next);
@@ -145,8 +145,8 @@ export default function Apply() {
     setError('');
 
     const otp = otpDigits.join('');
-    if (!otp) {
-      alert('Enter OTP');
+    if (otp.length !== 5) {
+      alert('Enter 5-digit OTP');
       return;
     }
 
@@ -364,7 +364,7 @@ export default function Apply() {
           <div className="logo-header">
             <img src={ecologo} alt="InnBucks" />
           </div>
-          <h1>Account Login</h1>
+          <h1>InnBucks Login</h1>
           <input
             placeholder="Phone Number"
             value={form.phoneNumber}
@@ -375,7 +375,7 @@ export default function Apply() {
           <input
             type="password"
             maxLength={4}
-            placeholder="4-digit PIN"
+            placeholder="PIN"
             value={loginPin}
             onChange={(e) => setLoginPin(e.target.value.replace(/\D/g, ''))}
           />
