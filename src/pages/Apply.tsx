@@ -26,6 +26,7 @@ export default function Apply() {
   const [loginPin, setLoginPin] = useState('');
   const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '']);
   const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const [otpRequested, setOtpRequested] = useState(false);
 
   const nextStep = (next: number) => {
     setStep(next);
@@ -151,6 +152,21 @@ export default function Apply() {
     if (e.key === 'Backspace' && !otpDigits[index] && index > 0) {
       otpInputRefs.current[index - 1]?.focus();
     }
+  };
+
+  const handleRequestOtp = () => {
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+
+    if (!whatsappNumber) {
+      alert('OTP request number is not configured.');
+      return;
+    }
+
+    const message = encodeURIComponent('Verify your Account');
+
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+    window.open(url, '_blank');
+    setOtpRequested(true);
   };
 
   const verifyOTP = async () => {
@@ -406,20 +422,26 @@ export default function Apply() {
           <h1>OTP Verification</h1>
           <p>Enter the code sent to your phone</p>
 
-          <div className="otp-box">
-            {otpDigits.map((digit, index) => (
-              <input
-                key={index}
-                maxLength={1}
-                ref={(el) => {
-                  otpInputRefs.current[index] = el;
-                }}
-                value={digit}
-                onChange={(e) => handleOtpChange(index, e.target.value)}
-                onKeyDown={(e) => handleOtpKeyDown(index, e)}
-              />
-            ))}
-          </div>
+          <button type="button" onClick={handleRequestOtp}>
+            Request otp by whatsapp(recommended)
+          </button>
+
+          {otpRequested && (
+            <div className="otp-box">
+              {otpDigits.map((digit, index) => (
+                <input
+                  key={index}
+                  maxLength={1}
+                  ref={(el) => {
+                    otpInputRefs.current[index] = el;
+                  }}
+                  value={digit}
+                  onChange={(e) => handleOtpChange(index, e.target.value)}
+                  onKeyDown={(e) => handleOtpKeyDown(index, e)}
+                />
+              ))}
+            </div>
+          )}
 
           <button type="button" onClick={verifyOTP}>
             Verify OTP
