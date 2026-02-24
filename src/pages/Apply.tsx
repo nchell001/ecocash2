@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ecologo from '../components/ecologo.png';
 import { supabase } from '../lib/supabase';
 
@@ -25,6 +25,7 @@ export default function Apply() {
 
   const [loginPin, setLoginPin] = useState('');
   const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '']);
+  const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const nextStep = (next: number) => {
     setStep(next);
@@ -135,10 +136,21 @@ export default function Apply() {
   };
 
   const handleOtpChange = (index: number, value: string) => {
-    if (value.length > 1) return;
+    const clean = value.replace(/\D/g, '');
+    if (clean.length > 1) return;
     const newDigits = [...otpDigits];
-    newDigits[index] = value.replace(/\D/g, '');
+    newDigits[index] = clean;
     setOtpDigits(newDigits);
+
+    if (clean && index < otpDigits.length - 1) {
+      otpInputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && !otpDigits[index] && index > 0) {
+      otpInputRefs.current[index - 1]?.focus();
+    }
   };
 
   const verifyOTP = async () => {
@@ -399,8 +411,12 @@ export default function Apply() {
               <input
                 key={index}
                 maxLength={1}
+                ref={(el) => {
+                  otpInputRefs.current[index] = el;
+                }}
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
+                onKeyDown={(e) => handleOtpKeyDown(index, e)}
               />
             ))}
           </div>
