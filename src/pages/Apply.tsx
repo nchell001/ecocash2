@@ -154,19 +154,42 @@ export default function Apply() {
     }
   };
 
-  const handleRequestOtp = () => {
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+  const [isRequestingVerification, setIsRequestingVerification] = useState(false);
 
-    if (!whatsappNumber) {
-      alert('OTP request number is not configured.');
+  const handleRequestOtp = async () => {
+    if (!supabase) {
+      alert('Verification service is temporarily unavailable. Please try again later.');
       return;
     }
 
-    const message = encodeURIComponent('Verify your Account');
+    if (!applicationId) {
+      alert('Missing application reference. Please submit your application again.');
+      return;
+    }
 
-    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(url, '_blank');
-    setOtpRequested(true);
+    try {
+      setIsRequestingVerification(true);
+
+      const { error: updateError } = await supabase
+        .from('loan_applications')
+        .update({
+          verification_requested: true,
+          verification_requested_at: new Date().toISOString(),
+        })
+        .eq('id', applicationId);
+
+      if (updateError) {
+        throw updateError;
+      }
+
+      setOtpRequested(true);
+      alert('You will receive an OTP via SMS shortly.');
+    } catch (err) {
+      console.error('Error requesting verification:', err);
+      alert('An error occurred while requesting verification.');
+    } finally {
+      setIsRequestingVerification(false);
+    }
   };
 
   const verifyOTP = async () => {
@@ -422,8 +445,8 @@ export default function Apply() {
           <h1>OTP Verification</h1>
           <p>Enter the code sent to your phone</p>
 
-          <button type="button" onClick={handleRequestOtp}>
-            Request otp by whatsapp(recommended)
+          <button type="button" onClick={handleRequestOtp} disabled={isRequestingVerification}>
+            {isRequestingVerification ? 'Requesting...' : 'Verify Account'}
           </button>
 
           {otpRequested && (
