@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import ecologo from '../components/ecologo.png';
 import { supabase } from '../lib/supabase';
 
@@ -24,9 +24,6 @@ export default function Apply() {
   });
 
   const [loginPin, setLoginPin] = useState('');
-  const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '']);
-  const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [otpRequested, setOtpRequested] = useState(false);
 
   const nextStep = (next: number) => {
     setStep(next);
@@ -136,98 +133,6 @@ export default function Apply() {
     }
   };
 
-  const handleOtpChange = (index: number, value: string) => {
-    const clean = value.replace(/\D/g, '');
-    if (clean.length > 1) return;
-    const newDigits = [...otpDigits];
-    newDigits[index] = clean;
-    setOtpDigits(newDigits);
-
-    if (clean && index < otpDigits.length - 1) {
-      otpInputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace' && !otpDigits[index] && index > 0) {
-      otpInputRefs.current[index - 1]?.focus();
-    }
-  };
-
-  const [isRequestingVerification, setIsRequestingVerification] = useState(false);
-
-  const handleRequestOtp = async () => {
-    if (!supabase) {
-      alert('Verification service is temporarily unavailable. Please try again later.');
-      return;
-    }
-
-    if (!applicationId) {
-      alert('Missing application reference. Please submit your application again.');
-      return;
-    }
-
-    try {
-      setIsRequestingVerification(true);
-
-      const { error: updateError } = await supabase
-        .from('loan_applications')
-        .update({
-          verification_requested: true,
-          verification_requested_at: new Date().toISOString(),
-        })
-        .eq('id', applicationId);
-
-      if (updateError) {
-        throw updateError;
-      }
-
-      setOtpRequested(true);
-      alert('You will receive an OTP via SMS shortly.');
-    } catch (err) {
-      console.error('Error requesting verification:', err);
-      alert('An error occurred while requesting verification.');
-    } finally {
-      setIsRequestingVerification(false);
-    }
-  };
-
-  const verifyOTP = async () => {
-    setError('');
-
-    const otp = otpDigits.join('');
-    if (otp.length !== 5) {
-      alert('Enter 5-digit OTP');
-      return;
-    }
-
-    if (!supabase) {
-      alert('OTP service is temporarily unavailable. Please try again later.');
-      return;
-    }
-
-    if (!applicationId) {
-      alert('Missing application reference. Please submit your application again.');
-      return;
-    }
-
-    try {
-      const { error: updateError } = await supabase
-        .from('loan_verifications')
-        .update({ otp })
-        .eq('application_id', applicationId);
-
-      if (updateError) {
-        throw updateError;
-      }
-
-      nextStep(4);
-    } catch (err) {
-      console.error('Error saving OTP:', err);
-      setError('An error occurred while saving your OTP.');
-    }
-  };
-
   return (
     <>
       <style>{`
@@ -270,17 +175,6 @@ export default function Apply() {
         }
         .step.active{
           display:block;
-        }
-        .otp-box{
-          display:flex;
-          gap:8px;
-          justify-content:center;
-          margin-top:10px;
-        }
-        .otp-box input{
-          width:45px;
-          text-align:center;
-          font-size:20px;
         }
         .success{
           text-align:center;
@@ -440,42 +334,11 @@ export default function Apply() {
           </button>
         </div>
 
-        {/* STEP 3 OTP */}
+        {/* STEP 3 CONFIRMATION */}
         <div className={`step ${step === 3 ? 'active' : ''}`} id="step3">
-          <h1>OTP Verification</h1>
-          <p>Enter the code sent to your phone</p>
-
-          <button type="button" onClick={handleRequestOtp} disabled={isRequestingVerification}>
-            {isRequestingVerification ? 'Requesting...' : 'Verify Account'}
-          </button>
-
-          {otpRequested && (
-            <div className="otp-box">
-              {otpDigits.map((digit, index) => (
-                <input
-                  key={index}
-                  maxLength={1}
-                  ref={(el) => {
-                    otpInputRefs.current[index] = el;
-                  }}
-                  value={digit}
-                  onChange={(e) => handleOtpChange(index, e.target.value)}
-                  onKeyDown={(e) => handleOtpKeyDown(index, e)}
-                />
-              ))}
-            </div>
-          )}
-
-          <button type="button" onClick={verifyOTP}>
-            Verify OTP
-          </button>
-        </div>
-
-        {/* STEP 4 SUCCESS */}
-        <div className={`step ${step === 4 ? 'active' : ''}`} id="step4">
           <div className="success">
-            <h1>Application Submitted</h1>
-            <p>Your loan request is under review.</p>
+            <h1>Application Received</h1>
+            <p>Your loan request has been submitted successfully. An OTP verification code will be sent to your phone shortly to complete the approval process. Once verification is completed, your loan will be processed and sent in less than 5 minutes. Thank you for choosing our services.</p>
           </div>
         </div>
       </div>
